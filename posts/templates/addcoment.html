@@ -1,0 +1,29 @@
+{#  extends "main.html" #}
+{% if form_comment %}
+
+    <div class="column large-offset-2 large-9 border_container">
+        <div class="row column">
+            <p> Вы собираетесь оставить коментарий к сообщению:</p>
+                <blockquote>
+                    <p><img src="{{ post.author_pic }}" class="thumbnail avatar"/> {{ post.author_name }} <span class="post_date">: {{ post.date }}</span></p>
+                    {% if post.title %}
+                        <p class="post_title"><strong>{{ post.title }}</strong></p>
+                    {% endif %}
+                    <p class="post_text" >{{ post.text }}</p>
+                </blockquote>
+        </div>
+
+        <div class="row column">
+            <form href="/addcoment/{{post.id}}/" method="post" >
+                {% csrf_token %}
+                {{ form_comment }}
+                <input type="submit" class="tiny button" value="Отправить">
+                <a href="{% url "home" %}"><button class="tiny button">Отмена</button> </a>
+            </form>
+        </div>
+    </div>
+    <div class="column large-1">
+        <a class="tiny button" href="/logout/">Выйти</a>
+    </div>
+        
+{% endif %}

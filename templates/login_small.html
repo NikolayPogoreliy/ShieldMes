@@ -1,0 +1,14 @@
+{% load staticfiles %}
+                <div class="large-11 large-centered column" id="login_small">
+                    <div class="row">
+                        <div class="large-2 large-centered column">
+                           <a href="{% url "google_login" %}"> <img  src="{% static "static/img/google_plus.png" %}" alt="Google+"/>  </a>
+
+                           <a href="{% url "vk_login" %}">  <img  src="{% static "static/img/vk_2.png" %}" alt="VK.com">  </a>
+                        </div>
+                    </div>
+
+                    <div class="row column">
+                        <h6 class="subheader text-center"> *Для добавления или комментирования сообщений, войдите на сайт.</h6>
+                    </div>
+                </div>

@@ -1,0 +1,80 @@
+{% load staticfiles %}
+{% load posts_tree %} <!-- загружаем тег для формирования дерева постов-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>S.H.I.E.L.D messanger</title>
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/foundation.min.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/foundation.css" %}"/>
+        <!-- Insert this within your head tag and after foundation.css -->
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/foundation-icons.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/shield.css" %}"/>
+</head>
+<body>
+    <header class="row">
+
+        {% if user.is_authenticated %}
+            {% include "addcoment.html" %}
+            {% include "addpost.html" %}
+        {% else %}
+            {% include "login_small.html" %}
+        {% endif %}
+
+    </header>
+
+    <main>
+
+        <div class="row">
+
+            <input type="checkbox" id="hideall" class="tiny button hide-all"/>
+            <label for="hideall" class="tiny button hide-all"> комментарии</label>
+
+            {% for post in posts %}
+                <div class="row column border_container">
+                    {% posts_tree post user %}
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="row">
+            {% include "paginator.html" %}
+        </div>
+
+    </main>
+
+    <footer name="footer">
+
+    </footer>
+    <script src="{% static "static/js/vendor/jquery.js" %}"></script>
+    <script src="{% static "static/js/vendor/what-input.js"%}"></script>
+    <script src="{% static "static/js/foundation.min.js"%}"></script>
+    <script src="{% static "static/js/app.js"%}"></script>
+<script>
+    var checkboxes = document.querySelectorAll('input.del'),
+    checkall = document.getElementById('hideall');
+
+for(var i=0; i<checkboxes.length; i++) {
+    checkboxes[i].onclick = function() {
+        var checkedCount = document.querySelectorAll('input.thing:checked').length;
+
+        checkall.checked = checkedCount > 0;
+        checkall.indeterminate = checkedCount > 0 && checkedCount < checkboxes.length;
+    }
+}
+
+checkall.onclick = function() {
+    for(var i=0; i<checkboxes.length; i++) {
+        checkboxes[i].checked = this.checked;
+    }
+}
+
+</script>
+    
+
+</body>
+</html>

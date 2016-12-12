@@ -1,0 +1,61 @@
+{% load staticfiles %}
+
+{% load socialaccount %}
+{% load account %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if user.is_authenticated %}
+        <meta http-equiv="refresh" content="/">
+    {% endif %}
+    <title>S.H.I.E.L.D messanger</title>
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/foundation.min.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/foundation.css" %}"/>
+        <!-- Insert this within your head tag and after foundation.css -->
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/foundation-icons.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/shield.css" %}"/>
+</head>
+<body>
+    <header class="row">
+
+    </header>
+
+    <main>
+        <div class="row">
+            <div class="login_container large-11 large-centered column">
+                <div class="row column">
+                    <h3 class="text-center"> Для добавления или комментирования сообщений, войдите на сайт через:</h3>
+                </div>
+
+                <div class="row">
+                    <div class="large-2 large-centered column" style="margin-top:2rem;">
+                       <a href="{% url "google_login" %}"><img  src="{% static "static/img/google_plus.png" %}" alt="Google+"/> </a>
+                         или
+                       <a href="{% url "vk_login" %}"><img  src="{% static "static/img/vk_2.png" %}" alt="VK.com">  </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-7 large-centered column" style="margin-top: 6rem;">
+                       <h5 class="subheader text-center"> Или откройте страницу с сообщениями для
+                           <a href="{% url "posts" %}">
+                               <button class="tiny button" style="font-size: 16px; border-radius: 8px; height: 22px; padding:0 10px 1px 10px; margin:0px;">просмотра</button>
+                           </a>
+                       </h5>
+                    </div>
+                </div>
+            </div>
+       </div>
+    </main>
+
+    <footer>
+
+    </footer>
+    <script src="{% static "static/js/vendor/jquery.js" %}"></script>
+    <script src="{% static "static/js/vendor/what-input.js"%}"></script>
+    <script src="{% static "static/js/foundation.min.js"%}"></script>
+    <script src="{% static "static/js/app.js"%}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+    <div class="large-6 large-centered column" id="paginator">
+        {% if posts %}
+        <ul class="pagination text-center" role="navigation">
+            {% if posts.has_previous %}
+                <li> <a class="a-pag-arrows fi-previous" href="?page=1"> </a> </li>
+                <li> <a class="a-pag-arrows fi-rewind" href="?page={{ posts.previous_page_number }}"></a> </li>
+            {% else %}
+                <li class="a-pag-arrows fi-previous disabled"></li>
+                <li class="a-pag-arrows fi-rewind disabled"></li>
+            {% endif %}
+
+            {% for page in pages_to_view %}
+                {% if page == posts.number %}
+                    <li class="current"> {{ page }}</li>
+                {% else %}
+                    <li> <a href="?page={{ page }}">{{ page }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if posts.has_next %}
+                <li> <a class="a-pag-arrows fi-fast-forward" href="?page={{posts.next_page_number}}"> </a> </li>
+                <li> <a href="?page={{posts.paginator.num_pages}}">  of {{posts.paginator.num_pages}} </a> </li>
+            {% else %}
+                <li class="a-pag-arrows fi-fast-forward disabled"> </li>
+                <li class="disabled"> of {{posts.paginator.num_pages}}</li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </div>

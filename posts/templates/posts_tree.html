@@ -1,0 +1,35 @@
+{% load posts_tree %}
+
+
+        <!--<div class="row columns">-->
+            <div class="large-12 column"><a href="{{ post.author_link }}" target="_blank"><img src="{{ post.author_pic }}" class="thumbnail avatar"/>
+                 {{ post.author_name }}</a><span class="post_date">: {{ post.date }}</span>
+
+                {% if post.author_name == user.username %}
+                    <a class="fi-pencil text-right" href="{% url "editpost" post.id %}" title="Редактировать"></a>
+                {% endif %}
+            </div>
+            <!--<div class="large-12 column">-->
+                <div class="row columns">
+                    {% if post.title %}
+                        <div class="large-12 column post_title"><p><strong>{{ post.title }}</strong></p></div>
+                    {% endif %}
+                    <div class="large-12 column post_text" ><a name="post{{ post.id }}"></a><p >{{ post.text }}</p></div>
+
+                    <a class="tiny button" href="/addcoment/{{ post.id }}/" > Комментировать </a>
+
+                    {% if post.coments_count %}
+                        <input type="checkbox" id="{{ post.id }}" class="del" name="show"/>
+                        <label for="{{ post.id }}" class="del">Всего коментариев: {{ post.coments_count }}</label>
+                        <div class="row columns">
+                            {% for child in children %}
+                                <div class="large-offset-1 large-11 column border_container" >
+                                    {% posts_tree child user%}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            <!--</div>-->
+        <!--</div>-->
+

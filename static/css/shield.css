@@ -1,0 +1,111 @@
+body{
+    background-image: url(../img/shield2.jpg);
+    background-attachment: fixed;
+    background-size: 100%;
+
+}
+
+.border_container{
+    border: solid 1px #eed3d3;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    padding: 5px !important;
+}
+
+
+.login_container{
+    border: solid 1px #eed3d3;
+    border-radius: 8px;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+    padding-top: 6rem;
+    padding-bottom: 5rem;
+}
+
+.border_container,
+.login_container {
+    background-color: #eaeaea;
+    opacity: 0.93;
+}
+
+#login_small{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background-color: #eaeaea;
+    opacity: 0.7;
+}
+
+#paginator{
+    border-radius: 8px;
+    background-image: linear-gradient(to right, #f8f8f8, #a2a2a2, #f8f8f8);
+    opacity: 0.5;
+    padding: 5px 0;
+}
+#paginator ul{
+    margin: 0;
+}
+
+#paginator .disabled{
+    color: #646464;
+}
+
+
+.del, .hide-all { display: none; }
+/*.del:not(:checked) + label + * { display: none; } /* фактически нужна только одна строка */
+.del:not(:checked) + label + * { display: none; }
+/*.hide-all:not(:checked) + label ~ div .comments {display: none;}
+.hide-all:checked + label ~ div .comments {display: block;}*/
+
+.a-pag-arrows{
+    font-size: 16px !important;
+    padding: 0 !important;
+    margin-bottom: 0;
+}
+
+.avatar{
+    width: 35px;
+    height: 35px;
+    margin: 0;
+}
+
+.hide-all:not(:checked) + label,
+.hide-all:checked + label {
+    width: 200px;
+}
+
+.hide-all:checked + label{
+    background-color: #5f5f5f;
+}
+
+.hide-all:not(:checked)+label::before{
+    content: "Показать все";
+}
+
+.hide-all:checked + label::before{
+    content: "Скрыть все";
+}
+
+.post_date{
+    font-size: 10px;
+    font-style: italic;
+    color: maroon;
+}
+
+.post_title{
+    background-image: linear-gradient(to right, #eed3d3 , #eaeaea 50%);
+    border-bottom: #eed3d3 dashed 1px;
+    margin-top: 3px;
+}
+
+.post_title p{
+    margin: 0;
+}
+
+.post_text p{
+    margin: 1rem 0;
+}
+
+#add_post label{
+    color: #eaeaea;
+}
